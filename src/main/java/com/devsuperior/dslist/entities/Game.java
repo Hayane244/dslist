@@ -16,11 +16,12 @@ import jakarta.persistence.Table;
  * Em cima no nome da clase utilize a annotetion @Entity
  */
 
-//Classe que vai representar um jogo
 @Entity
-//Essa annotetion configura a classe java para que ela seja quivalente a uma tabela do Banco Relacinal
+//Essa annotetion configura a classe java para que ela seja equivalente a uma tabela do Banco Relacinal
 @Table (name = "tb_game")
 //Essa annotetion customiza o nome da Tabela no Banco de dados. O nome será tb_game
+
+//Classe que vai representar um jogo
 public class Game {
 	
 //Atributos de um game
@@ -34,7 +35,7 @@ public class Game {
 	private String title;
 	
 	/**year é m palavra reservada do Banco de Dados. Essa palavra pode causar
-	*probema ao gerar o Banco de Dados do modelo Relacional com a JPA
+	* probema ao gerar o Banco de Dados do modelo Relacional com a JPA
 	*/
 	@Column(name = "game_year")
 	private Integer year;
@@ -42,7 +43,18 @@ public class Game {
 	private String platforms;
 	private double score;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
+	
+	/**O valor que foi colocado na coluna longDescription é um valor muito grande. São muitos caracteres, e por isso 
+	 * esse campo não pode ser uma String do Java. Embora a String aceite um valor alto, se não for colocado nada 
+	 * no seu mapeamento a JPA entende que essa String será mapeada para um campo no Banco de Dadoscom até 255 caracteres.
+	*  
+	* Nesse caso é preciso colocar uma instrução para que a JPA na hora de gerar o Banco, 
+	* gere esse campo como sendo um texto, e não um VARCHAR 255. Para isso é utilizado a annotetion @Column.
+	*/
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	// Construtor Game sem argumentos
