@@ -31,7 +31,7 @@ public class Game {
 	//Para que esse id seja auto incrementado pelo Banco de Dados:
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	//IDENTITY é uma forma que ele vai indicar para o Banco gerar o id
-	private long id;
+	private Long id;
 	private String title;
 	
 	/**year é m palavra reservada do Banco de Dados. Essa palavra pode causar
@@ -41,7 +41,7 @@ public class Game {
 	private Integer year;
 	private String genre;
 	private String platforms;
-	private double score;
+	private Double score;
 	private String imgUrl;
 	
 	@Column(columnDefinition = "TEXT")
@@ -65,7 +65,7 @@ public class Game {
 	* Construtor com argumentos, para ter a possibilidade de instanciar um game 
 	* já passando os argumentos para ele 
 	*/
-	public Game(long id, String title, Integer year, String genre, String platforms, double score, String imgUrl,
+	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
 		
 		/**
@@ -86,11 +86,11 @@ public class Game {
 	}
 	
 	//Métodos Getters e Setters dos atributos
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -126,11 +126,11 @@ public class Game {
 		this.platforms = platforms;
 	}
 
-	public double getScore() {
+	public Double getScore() {
 		return score;
 	}
 
-	public void setScore(double score) {
+	public void setScore(Double score) {
 		this.score = score;
 	}
 
